@@ -6,10 +6,17 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,6 +31,7 @@ public class Student implements Serializable{
     private int day;
     private int month;
     private int year;
+   
 
     public Student() {
     }
@@ -75,7 +83,9 @@ public class Student implements Serializable{
     public void setYear(int year) {
         this.year = year;
     }
-
+   
+   
+    
     @Override
     public String toString() {
         return "Student{" 
@@ -85,7 +95,12 @@ public class Student implements Serializable{
                 + ", day=" + day 
                 + ", month=" + month 
                 + ", year=" + year 
+                
                 + '}';
     }
+
+
     
+
+   
 }
