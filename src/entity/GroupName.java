@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +17,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -29,6 +32,13 @@ public class GroupName implements Serializable {
     private Long id;
     private String gname;
     private int year;
+    @OneToMany
+    @JoinTable(
+        name="group_students",
+        joinColumns = @JoinColumn(name = "student_fk"),
+        inverseJoinColumns = @JoinColumn(name = "group_fk") 
+    )
+    private List<Student> students = new ArrayList<>();
     
     
 
@@ -62,6 +72,14 @@ public class GroupName implements Serializable {
     @Override
     public String toString() {
         return "GroupName{" + "id=" + id + ", gname=" + gname + ", year=" + year + '}';
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     

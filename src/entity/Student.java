@@ -31,6 +31,8 @@ public class Student implements Serializable{
     private int day;
     private int month;
     private int year;
+    @OneToOne
+    private GroupName grup;
    
 
     public Student() {
@@ -97,6 +99,14 @@ public class Student implements Serializable{
                 + ", year=" + year 
                 
                 + '}';
+    }
+
+    public GroupName getGrup() {
+        return grup;
+    }
+
+    public void setGrup(GroupName grup) {
+        this.grup = grup;
     }
 
 
