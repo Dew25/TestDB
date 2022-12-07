@@ -66,7 +66,18 @@ public class App {
               
                 groupName.getStudents().add(student);
                 em.merge(groupName);
-
+                
+                student = new Student();
+                student.setFirstname("Simon");
+                student.setLastname("Simonov");
+                student.setDay(10);
+                student.setMonth(10);
+                student.setYear(2010);
+                student.setGrup(groupName);
+                em.persist(student);
+                
+                groupName.getStudents().add(student);
+                em.merge(groupName);
                 
                 //================
                 groupName = new GroupName();
@@ -92,12 +103,12 @@ public class App {
             System.out.println("Students:");
             for (int i = 0; i < students.size(); i++) {
                 Student student = students.get(i);
-                System.out.printf("%d. %s %s, group: %s-%d%n",
+                System.out.printf("%d. %s %s, %d. Group: %s%n",
                         i+1
                         ,student.getFirstname()
                         ,student.getLastname()
-                        ,student.getGrup()
                         ,student.getYear()
+                        ,student.getGrup()
                 );
             }
             System.out.println("Groups:");
